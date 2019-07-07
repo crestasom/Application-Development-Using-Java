@@ -3,23 +3,36 @@ package week1.model;
 public class Vertex {
 
 	private int id;
+	private String name;
 	private double latitude;
 	private double longitude;
 	
 	//default constructor
 	public Vertex() {
 		this.id=0;
+		this.name="";
 		this.latitude=0;
 		this.longitude=0;
 	}
 	
 	//parameterized Constructor
-	public Vertex(int id, double latitude, double longitude) {
+	public Vertex(int id,String name, double latitude, double longitude) {
 		super();
 		this.id = id;
+		this.name=name;
 		this.latitude = latitude;
 		this.longitude = longitude;
 	}
+	
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public int getId() {
 		return id;
 	}
