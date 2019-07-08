@@ -50,6 +50,8 @@ public class MainClass {
 		System.out.println(e4);
 		System.out.println(e5);
 		System.out.println(e6);
+		//System.out.println(e6);
+		
 	}
 
 	public static Vertex initializeVertex() {
