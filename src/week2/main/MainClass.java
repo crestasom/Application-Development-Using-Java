@@ -17,7 +17,7 @@ public class MainClass {
 		// connection string
 		ArrayList<Vertex> vList=new ArrayList<Vertex>();
 		Vertex v;
-		String url = "jdbc:mysql://localhost:3306/graph";
+		String url = "jdbc:mysql://localhost:3302/graph";
 		String username = "root";
 		String password = "";
 		String sql = "";
