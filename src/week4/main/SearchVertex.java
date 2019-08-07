@@ -24,7 +24,7 @@ public class SearchVertex extends JFrame implements ActionListener {
 	JComboBox<String> searchBy;
 	JTextField searchByInput;
 	MainClass obj;
-	JButton search;
+	JButton search, back;
 
 	public SearchVertex(MainClass obj) {
 		super("Search Vertex");
@@ -38,6 +38,7 @@ public class SearchVertex extends JFrame implements ActionListener {
 		initializeAllComponent();
 		add(mainPanel);
 		pack();
+
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 	}
@@ -78,49 +79,59 @@ public class SearchVertex extends JFrame implements ActionListener {
 		longLbl = new JLabel("Longitude: ");
 		mainPanel.add(longLbl);
 
+		back = new JButton("Go back");
+		back.addActionListener(this);
+		mainPanel.add(back);
+
 	}
-	
+
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-		int choice = searchBy.getSelectedIndex();
-		switch (choice) {
-		case 0:
-			int id = Integer.parseInt(searchByInput.getText());
-			try {
+		if (arg0.getSource().equals(search)) {
+			int choice = searchBy.getSelectedIndex();
+			switch (choice) {
+			case 0:
+				int id = Integer.parseInt(searchByInput.getText());
+				try {
 
-				Vertex v = db.getVertex(id);
-				if (v != null) {
-					idLbl.setText("ID: " + v.getId());
-					nameLbl.setText("Name: " + v.getName());
-					latLbl.setText("Latitude: " + v.getLatitude());
-					longLbl.setText("Longitude: " + v.getLongitude());
-				} else {
-					JOptionPane.showMessageDialog(null, "No vertex found with such id");
+					Vertex v = db.getVertex(id);
+					if (v != null) {
+						idLbl.setText("ID: " + v.getId());
+						nameLbl.setText("Name: " + v.getName());
+						latLbl.setText("Latitude: " + v.getLatitude());
+						longLbl.setText("Longitude: " + v.getLongitude());
+					} else {
+						JOptionPane.showMessageDialog(null, "No vertex found with such id");
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			break;
-		case 1:
-			String input = searchByInput.getText();
-			try {
-				Vertex v = db.getVertexByName(input);
-				if (v != null) {
-					idLbl.setText("ID: " + v.getId());
-					nameLbl.setText("Name: " + v.getName());
-					latLbl.setText("Latitude: " + v.getLatitude());
-					longLbl.setText("Longitude: " + v.getLongitude());
-				} else {
-					JOptionPane.showMessageDialog(null, "No vertex found with such name");
+				break;
+			case 1:
+				String input = searchByInput.getText();
+				try {
+					Vertex v = db.getVertexByName(input);
+					if (v != null) {
+						idLbl.setText("ID: " + v.getId());
+						nameLbl.setText("Name: " + v.getName());
+						latLbl.setText("Latitude: " + v.getLatitude());
+						longLbl.setText("Longitude: " + v.getLongitude());
+					} else {
+						JOptionPane.showMessageDialog(null, "No vertex found with such name");
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				break;
 			}
-			break;
+			
+		}else if(arg0.getSource().equals(back)) {
+			setVisible(false);
+			obj.setVisible(true);
+			dispose();
 		}
-
 	}
 }

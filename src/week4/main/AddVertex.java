@@ -28,11 +28,11 @@ public class AddVertex extends JFrame implements ActionListener {
 	MainClass obj;
 
 	public AddVertex(MainClass obj) {
-		
+
 		super("Add New Vertex");
-		this.obj=obj;
+		this.obj = obj;
 		try {
-			db=new Database();
+			db = new Database();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -79,10 +79,10 @@ public class AddVertex extends JFrame implements ActionListener {
 		// TODO Auto-generated method stub
 
 		if (e.getSource().equals(add)) {
-			String n=name.getText();
-			double latCode=Double.parseDouble(lati.getText());
-			double longCode=Double.parseDouble(longi.getText());
-			Vertex v=new Vertex(n,latCode,longCode);
+			String n = name.getText();
+			double latCode = Double.parseDouble(lati.getText());
+			double longCode = Double.parseDouble(longi.getText());
+			Vertex v = new Vertex(n, latCode, longCode);
 			try {
 				db.addVertex(v);
 				JOptionPane.showMessageDialog(null, "Vertex has been successfully added");
@@ -93,10 +93,11 @@ public class AddVertex extends JFrame implements ActionListener {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			
 
 		} else if (e.getSource().equals(cancel)) {
-			
+			setVisible(false);
+			obj.setVisible(true);
+			dispose();
 		}
 	}
 

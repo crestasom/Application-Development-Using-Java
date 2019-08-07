@@ -33,6 +33,7 @@ public class MainClass extends JFrame implements ActionListener {
 		panel.add(viewAll);
 		panel.add(searchVertex);
 		add(panel);
+	
 		pack();
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
@@ -55,7 +56,8 @@ public class MainClass extends JFrame implements ActionListener {
 			 
 
 		} else if (e.getActionCommand().equals("viewall")) {
-			
+			new ListAllVertex(this);
+			setVisible(false);
 
 		} else if (e.getActionCommand().equals("search")) {
 			new SearchVertex(this);
