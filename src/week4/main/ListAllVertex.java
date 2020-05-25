@@ -68,6 +68,7 @@ public class ListAllVertex extends JFrame implements ActionListener {
 		// TODO Auto-generated method stub
 		setVisible(false);
 		obj.setVisible(true);
+		db.close();
 		dispose();
 	}
 

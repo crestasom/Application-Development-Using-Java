@@ -87,6 +87,7 @@ public class AddVertex extends JFrame implements ActionListener {
 				db.addVertex(v);
 				JOptionPane.showMessageDialog(null, "Vertex has been successfully added");
 				setVisible(false);
+				db.close();
 				obj.setVisible(true);
 				dispose();
 			} catch (SQLException e1) {
@@ -97,8 +98,17 @@ public class AddVertex extends JFrame implements ActionListener {
 		} else if (e.getSource().equals(cancel)) {
 			setVisible(false);
 			obj.setVisible(true);
+			db.close();
 			dispose();
 		}
+	}
+	
+	@Override
+	protected void finalize() throws Throwable {
+		// TODO Auto-generated method stub
+		super.finalize();
+		System.out.println("closing connection");
+		db.close();
 	}
 
 }

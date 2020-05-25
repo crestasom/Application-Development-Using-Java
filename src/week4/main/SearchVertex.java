@@ -127,10 +127,11 @@ public class SearchVertex extends JFrame implements ActionListener {
 				}
 				break;
 			}
-			
-		}else if(arg0.getSource().equals(back)) {
+
+		} else if (arg0.getSource().equals(back)) {
 			setVisible(false);
 			obj.setVisible(true);
+			db.close();
 			dispose();
 		}
 	}

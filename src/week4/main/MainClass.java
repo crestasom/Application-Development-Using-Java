@@ -18,7 +18,7 @@ public class MainClass extends JFrame implements ActionListener {
 
 	public MainClass() {
 		super("Main Frame");
-		JPanel panel=new JPanel();
+		JPanel panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 		JButton addVertex = new JButton("Add New Vertex");
 		addVertex.addActionListener(this);
@@ -33,7 +33,7 @@ public class MainClass extends JFrame implements ActionListener {
 		panel.add(viewAll);
 		panel.add(searchVertex);
 		add(panel);
-	
+
 		pack();
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
@@ -51,9 +51,7 @@ public class MainClass extends JFrame implements ActionListener {
 		if (e.getActionCommand().equals("Add")) {
 			new AddVertex(this);
 			setVisible(false);
-			//dispose(); 
-			
-			 
+			// dispose();
 
 		} else if (e.getActionCommand().equals("viewall")) {
 			new ListAllVertex(this);
@@ -62,7 +60,7 @@ public class MainClass extends JFrame implements ActionListener {
 		} else if (e.getActionCommand().equals("search")) {
 			new SearchVertex(this);
 			setVisible(false);
-			
+
 		}
 	}
 }

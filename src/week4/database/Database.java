@@ -13,7 +13,7 @@ import com.mysql.jdbc.Statement;
 import week4.model.Vertex;
 
 public class Database {
-	String url = "jdbc:mysql://localhost:3306/graph";
+	String url = "jdbc:mysql://localhost:3306/tbl_graph";
 	String username = "root";
 	String password = "";
 	String sql = "";
@@ -24,6 +24,14 @@ public class Database {
 	public Database() throws SQLException {
 		con = (Connection) DriverManager.getConnection(url, username, password);
 
+	}
+	public void close() {
+		try {
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void addVertex(Vertex v) throws SQLException {
